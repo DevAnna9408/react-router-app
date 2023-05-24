@@ -1,13 +1,121 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {NavLink, BrowserRouter, Route, Routes, useParams} from "react-router-dom";
 
+const content = [
+    { id:1, title:'HTML', des:'html is..' },
+    { id:2, title:'JS', des:'js is..' },
+    { id:3, title:'React', des:'react is..' }
+
+]
+
+function Home() {
+    return(
+        <div>
+            <h2>Home</h2>
+            Home..
+        </div>
+    )
+}
+
+function Topics() {
+
+    var list = []
+    for(var c of content) {
+        list.push(
+            <li key={c.id}>
+                <NavLink to={"/topics/" + c.id}>
+                    {c.title}
+                </NavLink>
+            </li>
+        )
+    }
+
+    return(
+        <div>
+            <h2>Topics</h2>
+                <ul>
+                    { list }
+                </ul>
+            <Routes>
+                <Route path={"/:topic_id"} element={<Topic />}/>
+            </Routes>
+        </div>
+    )
+}
+
+function Topic () {
+    const params = useParams()
+    const topic_id = params.topic_id
+    let selected_topic = {
+        title: 'Sorry',
+        des: 'Not Found'
+    }
+
+    for(var c of content) {
+        if (c.id === Number(topic_id)) {
+            selected_topic = c
+            break
+        }
+    }
+
+    return(
+        <div>
+            <h3>{selected_topic.title}</h3>
+            {selected_topic.des}
+        </div>
+    )
+
+}
+
+function Contact() {
+    return(
+        <div>
+            <h2>Contact</h2>
+            Contact..
+        </div>
+    )
+}
+
+function App() {
+    return(
+        <div>
+            <h2>Route Basic</h2>
+                <ul>
+                    <li>
+                        <NavLink to={"/"}>
+                            <Home />
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={"/topics"}>
+                            <Topics />
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={"contact"}>
+                            <Contact />
+                        </NavLink>
+                    </li>
+                </ul>
+            <Routes>
+                <Route path={"/"} element={<Home />}/>
+                <Route path={"/topics/*"} element={<Topics />}/>
+                <Route path={"/contact"} element={<Contact />}/>
+                <Route path={"/*"} element={"Not Found"}/>
+            </Routes>
+        </div>
+    )
+}
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <App />
+      <BrowserRouter>
+          <App />
+      </BrowserRouter>
   </React.StrictMode>
 );
 
