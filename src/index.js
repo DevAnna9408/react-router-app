@@ -3,6 +3,33 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {NavLink, BrowserRouter, Route, Routes, useParams} from "react-router-dom";
+import styled from 'styled-components'
+
+const SimpleButton = styled.button`
+    color: white;
+    background-color: black;
+`
+
+const InterfaceButton = styled(SimpleButton)`
+    font-size: 50px;
+`
+
+// styledComponent는 고유한 className을 가지기 때문에
+// 일반 컴포넌트를 styled 상속 받으려면
+// className을 props로 받아서 기재 해 줘야 한다.
+const NormalButton = props => {
+    return <button className={props.className}>{props.children}</button>
+
+}
+const ReactNormalButton = styled(NormalButton)`
+    font-size: 50px;
+`
+
+const DynamicButton = styled.button`
+    color: ${function (props) {
+        return props.props
+}}
+`
 
 const content = [
     { id:1, title:'HTML', des:'html is..' },
@@ -16,6 +43,11 @@ function Home() {
         <div>
             <h2>Home</h2>
             Home..
+            <SimpleButton>Small</SimpleButton>
+            <InterfaceButton>Large</InterfaceButton>
+            <NormalButton>React</NormalButton>
+            <ReactNormalButton>React</ReactNormalButton>
+            <DynamicButton props = 'red'>Dynamic</DynamicButton>
         </div>
     )
 }
