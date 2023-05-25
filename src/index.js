@@ -4,7 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {NavLink, BrowserRouter, Route, Routes, useParams} from "react-router-dom";
 import styled from 'styled-components'
-
+import Reduce from "./views/reduce/Reduce";
 const SimpleButton = styled.button`
     color: white;
     background-color: black;
@@ -41,13 +41,13 @@ const content = [
 function Home() {
     return(
         <div>
-            <h2>Home</h2>
-            Home..
-            <SimpleButton>Small</SimpleButton>
-            <InterfaceButton>Large</InterfaceButton>
-            <NormalButton>React</NormalButton>
-            <ReactNormalButton>React</ReactNormalButton>
-            <DynamicButton props = 'red'>Dynamic</DynamicButton>
+                <h2>Home</h2>
+                Home..
+                <SimpleButton>Small</SimpleButton>
+                <InterfaceButton>Large</InterfaceButton>
+                <NormalButton>React</NormalButton>
+                <ReactNormalButton>React</ReactNormalButton>
+                <DynamicButton props = 'red'>Dynamic</DynamicButton>
         </div>
     )
 }
@@ -138,6 +138,8 @@ function App() {
                 <Route path={"/contact"} element={<Contact />}/>
                 <Route path={"/*"} element={"Not Found"}/>
             </Routes>
+            <hr />
+            <Reduce />
         </div>
     )
 }
