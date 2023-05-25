@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import Reduce from "./views/reduce/Reduce";
 import ReduxComponent from "./views/redux/ReduxComponent";
 import ReactReduxComponent from "./views/redux/ReactReduxComponent";
+import ReactToolkitComponent from "./views/redux/ReactToolkitComponent";
 const SimpleButton = styled.button`
     color: white;
     background-color: black;
@@ -145,6 +146,8 @@ function App() {
             <ReduxComponent />
             <hr />
             <ReactReduxComponent />
+            <hr />
+            <ReactToolkitComponent />
         </div>
     )
 }
