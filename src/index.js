@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import {NavLink, BrowserRouter, Route, Routes, useParams} from "react-router-dom";
 import styled from 'styled-components'
 import Reduce from "./views/reduce/Reduce";
+import ReduxComponent from "./views/redux/ReduxComponent";
 const SimpleButton = styled.button`
     color: white;
     background-color: black;
@@ -140,6 +141,7 @@ function App() {
             </Routes>
             <hr />
             <Reduce />
+            <ReduxComponent />
         </div>
     )
 }

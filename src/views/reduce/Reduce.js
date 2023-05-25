@@ -45,6 +45,7 @@ export default function Reduce() {
                 <input type={"text"} value={number} onChange={changeNumber}/>
                 <span>{count}</span>
             </div>
+            <hr />
         </div>
     )
 }
